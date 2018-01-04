@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  redactor_api:
+    build: .
+    ports:
+      - 9000:8000
+    volumes:
+      - .:/home/node/brickdev
+    depends_on:
+      - redactor_mongo
+    
+  redactor_mongo:
+    image: mongo:3.0-wheezy
+    ports:
+      - 27017
+    volumes:
+       - ./database:/data/db

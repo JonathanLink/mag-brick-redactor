@@ -1,0 +1,20 @@
+{
+  "name": "redactor_brick",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon -L server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "hapi": "^17.0.1",
+    "inert": "^5.0.1",
+    "mongoose": "^4.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

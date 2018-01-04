@@ -1,0 +1,17 @@
+.Row {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.5rem;
+}
+
+.Row > div {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 720px) {
+    .Row__lg--1, .Row__lg--10, .Row__lg--11, .Row__lg--12, .Row__lg--2, .Row__lg--3, .Row__lg--4, .Row__lg--5, .Row__lg--6, .Row__lg--7, .Row__lg--8, .Row__lg--9, .Row__md--1, .Row__md--10, .Row__md--11, .Row__md--12, .Row__md--2, .Row__md--3, .Row__md--4, .Row__md--5, .Row__md--6, .Row__md--7, .Row__md--8, .Row__md--9, .Row__sm--1, .Row__sm--10, .Row__sm--11, .Row__sm--12, .Row__sm--2, .Row__sm--3, .Row__sm--4, .Row__sm--5, .Row__sm--6, .Row__sm--7, .Row__sm--8, .Row__sm--9, .Row__xs--1, .Row__xs--10, .Row__xs--11, .Row__xs--12, .Row__xs--2, .Row__xs--3, .Row__xs--4, .Row__xs--5, .Row__xs--6, .Row__xs--7, .Row__xs--8, .Row__xs--9 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

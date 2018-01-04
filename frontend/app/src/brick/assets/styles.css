@@ -1,0 +1,51 @@
+.article > .Card {
+    top: -4rem;
+    margin-bottom: 0;
+    transition: width 0.2s;
+}
+
+.article p {
+    margin-bottom: 1rem;
+}
+
+.article-sentiment {
+    text-align: center;
+    font-size: 3.5rem;
+}
+
+@media screen and (min-width: 720px) {
+    
+    .article > .Card {
+        width: 40rem;
+        margin: 0 auto;
+     }
+
+    .article >  .article-cover {
+        width: 55rem;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 720px)  {
+    .article > .Card {
+       margin: 0.7rem;
+    }
+}
+
+
+@media only screen and (min-width: 920px)  {
+    .article > .Card {
+       width: 50rem;
+    }
+}
+
+@media only screen and (min-width: 1200px)  {
+    .article > .article-cover {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+
+

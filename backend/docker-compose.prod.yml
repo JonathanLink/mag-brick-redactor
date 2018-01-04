@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  redactor_api:
+    build: .
+    ports:
+      - 8000
+    volumes:
+      - @BASE_PATH@mag/mag-engine/apps/@APP_NAME@/bricks/redactor:/home/node/brickdev # absolute path
+    depends_on:
+      - redactor_mongo
+    environment: 
+      - NODE_ENV=production
+      - APP_NAME=@APP_NAME_ENV@
+
+  redactor_mongo:
+    image: mongo:3.0-wheezy
+    ports:
+      - 27017
+    volumes:
+      - @BASE_PATH@mag/mag-engine/apps/@APP_NAME@/bricks/redactor/database:/data/db # absolute path
+
+      #/home/jlink/Documents/mag/mag-engine/apps

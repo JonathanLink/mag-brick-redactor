@@ -1,0 +1,52 @@
+{
+  "_from": "sq-web-icons",
+  "_id": "sq-web-icons@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha1-XUif1eujXENYDeK9TV+sd5FCYPM=",
+  "_location": "/sq-web-icons",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "sq-web-icons",
+    "name": "sq-web-icons",
+    "escapedName": "sq-web-icons",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/",
+    "/sq-web-components-core-react"
+  ],
+  "_resolved": "https://npm.bank.swissquote.ch/repository/npm/sq-web-icons/-/sq-web-icons-1.0.2.tgz",
+  "_shasum": "5d489fd5eba35c43580de2bd4d5fac77914260f3",
+  "_spec": "sq-web-icons",
+  "_where": "/home/jlink/Documents/mag/bricks/redactor/frontend/app",
+  "author": {
+    "name": "Stéphane Goetz",
+    "email": "stephane.goetz@swissquote.ch"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Icon Library",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-preset-react": "^6.16.0",
+    "fs-extra": "^1.0.0",
+    "svgo": "^0.7.1"
+  },
+  "license": "Proprietary",
+  "main": "icons.js",
+  "name": "sq-web-icons",
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
+  },
+  "scripts": {
+    "build": "node build/compile.js",
+    "deploy": "node build/deploy.js"
+  },
+  "typings": "./typings.d.ts",
+  "version": "1.0.2"
+}

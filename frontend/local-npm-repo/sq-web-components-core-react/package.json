@@ -1,0 +1,61 @@
+{
+  "_from": "sq-web-components-core-react",
+  "_id": "sq-web-components-core-react@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-BP0gcoXEHp0+4lCZtkuFHmxQW50=",
+  "_location": "/sq-web-components-core-react",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "sq-web-components-core-react",
+    "name": "sq-web-components-core-react",
+    "escapedName": "sq-web-components-core-react",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://npm.bank.swissquote.ch/repository/npm/sq-web-components-core-react/-/sq-web-components-core-react-2.0.0.tgz",
+  "_shasum": "04fd207285c41e9d3ee25099b64b851e6c505b9d",
+  "_spec": "sq-web-components-core-react",
+  "_where": "/home/jlink/Documents/mag/bricks/redactor/frontend/app",
+  "author": {
+    "name": "Stéphane Goetz",
+    "email": "stephane.goetz@swissquote.ch"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.10",
+    "@types/react-dom": "^16.0.1",
+    "prop-types": "^15.6.0",
+    "react-popper": "^0.7.4",
+    "react-travel": "^1.3.2",
+    "sq-web-icons": "1.0.2",
+    "tslib": "^1.7.1"
+  },
+  "deprecated": false,
+  "description": "Components Library for React",
+  "devDependencies": {
+    "crafty": "1.0.2",
+    "crafty-preset-maven": "1.0.0",
+    "crafty-preset-typescript": "1.0.2",
+    "crafty-runner-gulp": "1.0.2",
+    "crafty-runner-webpack": "1.0.2"
+  },
+  "license": "Proprietary",
+  "main": "components.min.js",
+  "module": "index.js",
+  "name": "sq-web-components-core-react",
+  "scripts": {
+    "build": "crafty run",
+    "deploy": "node deploy.js",
+    "watch": "crafty watch"
+  },
+  "typings": "index.d.ts",
+  "version": "2.0.0"
+}
