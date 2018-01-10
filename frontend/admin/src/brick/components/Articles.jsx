@@ -19,7 +19,7 @@ class Articles extends Component {
     }
 
     componentWillMount() {
-        this.props.registerBrickView(this.props.location.pathname, this.props.history)
+        this.props.registerBrickView(this.props.history, true)
     }
 
     async componentDidMount() {

@@ -23,6 +23,10 @@ class Article extends Component {
         //this.publish = this.publish.bind(this)
     }
 
+    componentWillMount() {
+        this.props.registerBrickView(this.props.history)
+    }
+
     publish = async() => {
         let request
         try {

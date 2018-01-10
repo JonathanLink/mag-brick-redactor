@@ -13,7 +13,7 @@ class Article extends Component {
     //this.props.history.goBack()
 
     componentWillMount() {
-        this.props.registerBrickView(this.props.location.pathname, this.props.history)
+        this.props.registerBrickView(this.props.history)
     }
 
     render() {
