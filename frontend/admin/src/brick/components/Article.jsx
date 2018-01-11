@@ -37,10 +37,6 @@ class Article extends Component {
         console.log(request)
     }
 
-    componentWillMount() {
-        this.props.registerBrickView(this.props.location.pathname, this.props.history)
-    }
-
     render() {
         
         return (

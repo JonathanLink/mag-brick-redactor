@@ -57,7 +57,7 @@ class Articles extends Component {
         return (
             <Row>
                 <RowItem>
-                    <Link to={ 'admin/article/' } >
+                    <Link to={ '/article/' } >
                         <Button block size="large">Write an Article</Button>
                     </Link>
                 </RowItem>

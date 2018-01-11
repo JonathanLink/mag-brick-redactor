@@ -18,7 +18,8 @@ import 'sq-web-icons/icons.css'
 import './styles.css'
 import '../src/brick/assets/styles.css'
 
-import brick from '../src/brick/brick.js'
+import brick from '../src/brick/routes.js'
+
 
 class App extends Component {
 
@@ -50,9 +51,8 @@ class App extends Component {
         }
     }
 
-    registerBrickView = (path, history) => {
-        console.log(path)
-        this.setState({isBackButtonVisible: ('/admin' !== path)}) // (brick.routes[0].path
+    registerBrickView = (history, isEntryPoint=false) => {
+        this.setState( {isBackButtonVisible: !isEntryPoint } ) 
         this.setState({history: history})
     }
 
@@ -62,7 +62,6 @@ class App extends Component {
 
     render() {
         
-        const devComponent = brick.routes[0].component
         const menuClass = (this.state.isMenuOpen) ? "Drawer has-backdrop is-open" : "Drawer has-backdrop"
         const navClass = (this.state.isNavBarHidden) ? {top: "-7rem", transition: "top 0.5s"} : {top: "0rem", transition: "top 0.5s"}
  
@@ -93,24 +92,12 @@ class App extends Component {
                                 </span>
                                 </div>
                                 <div className="Drawer__content">
-                                    <List size="large">
-                                        <ListItem>Home</ListItem>
-                                        <ListItem><b>{brick.brickMenuName}</b></ListItem>
-                                        <ListItem>About</ListItem>
-                                    </List>
+                                    
                                 </div>
                             </div>
                         </div>
                         <Switch>
-                            {brick.routes.map((route, index) => 
-                                <Route key={index} exact path={(index == 0) ? '/admin' : '/admin'+route.path} 
-                                    render={ (props) => {
-                                            props.registerBrickView = this.registerBrickView
-                                            return React.createElement(route.component, props)
-                                        }
-                                    }
-                                />
-                            )}
+                            {brick.routes.map((route, index) => <Route key={ index } exact path={ route.path }  render={ (props) => { props.registerBrickView = this.registerBrickView; return React.createElement(route.component, props); } } /> )}
                         </Switch>
                     </div>
                 </div> 

@@ -18,7 +18,7 @@ let config = {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].chunk.js',
         chunkFilename: '[name]-chunk.js',
-        publicPath: '/admin'
+        publicPath: '/'
     },
     devtool: 'eval-source-map',
     resolve: {
@@ -78,13 +78,13 @@ let config = {
             minRatio: 0.8
         }),
         new BundleAnalyzerPlugin({analyzerMode: 'static', openAnalyzer: false})
-    ]/*,
+    ],
     devServer: {
         contentBase: [path.resolve(__dirname, './dist'), path.resolve(__dirname, './dev_server/sq-web-components-core-theme')],
         host: 'localhost',
         historyApiFallback: true,
         port: 8081
-    }*/
+    }
 }
 
 module.exports = config

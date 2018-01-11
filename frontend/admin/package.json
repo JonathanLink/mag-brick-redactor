@@ -43,7 +43,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-transition": "^1.1.2",
     "regenerator-runtime": "^0.11.0",
-    "sq-web-components-core-react": "file:../local-npm-repo/sq-web-components-core-react",
-    "sq-web-icons": "file:../local-npm-repo/sq-web-icons"
+    "sq-web-components-core-react": "file:./local-npm-repo/sq-web-components-core-react",
+    "sq-web-icons": "file:./local-npm-repo/sq-web-icons"
   }
 }
