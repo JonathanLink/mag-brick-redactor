@@ -16,11 +16,16 @@ import Textarea from "sq-web-components-core-react/forms/Textarea"
 import Button from "sq-web-components-core-react/forms/Button"
 import ButtonGroup from "sq-web-components-core-react/forms/ButtonGroup"
 
+const BLOCK_TEXT = 'TEXT'
+const BLOCK_IMAGE = 'IMAGE'
+const BLOCK_VIDEO = 'VIDEO'
+
 class Article extends Component {
 
     constructor(props) {
         super(props)
         //this.publish = this.publish.bind(this)
+        this.state = {blocks: [BLOCK_TEXT]}
     }
 
     componentWillMount() {
@@ -37,12 +42,28 @@ class Article extends Component {
         console.log(request)
     }
 
-    insertText = () => {
-        console.log('fds2')
+    insertBlock = (blockType) => {
+        let blocks = this.state.blocks
+        blocks.push(blockType)
+        console.log(blocks)
+        this.setState( {blocks: blocks} )
     }
+
+    getBlock = (blockType, key) => {
+        switch (blockType) {
+            case BLOCK_TEXT:
+                return <Textarea key={ key } size="large" />
+                break
+        }
+    }
+
 
     render() {
         
+        const blocks = this.state.blocks.map((blockType, index) => {
+            return this.getBlock(blockType, index)
+        })
+
         return (
             <Row>
                 <RowItem>
@@ -50,12 +71,12 @@ class Article extends Component {
                         <Input style={ {fontSize: "1.2rem", fontWeight: "bold"} } size="large" name="article-title" placeholder="Type the headline of your article here" />
                     </FormItem>
                     <FormItem>
-                        <Textarea size="large" />
+                        { blocks }
                     </FormItem>
                 </RowItem>
                 <RowItem style={ {textAlign: "center"} }>
                     <ButtonGroup>
-                        <Button onClick={ this.insertText } >Insert Text</Button>
+                        <Button onClick={ () => this.insertBlock(BLOCK_TEXT) } >Insert Text</Button>
                         <Button>Insert Image</Button>
                         <Button>Insert Video</Button>
                     </ButtonGroup>
