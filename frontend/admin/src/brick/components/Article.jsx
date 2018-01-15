@@ -37,6 +37,10 @@ class Article extends Component {
         console.log(request)
     }
 
+    insertText = () => {
+        console.log('fds2')
+    }
+
     render() {
         
         return (
@@ -51,7 +55,7 @@ class Article extends Component {
                 </RowItem>
                 <RowItem style={ {textAlign: "center"} }>
                     <ButtonGroup>
-                        <Button>Insert Text</Button>
+                        <Button onClick={ this.insertText } >Insert Text</Button>
                         <Button>Insert Image</Button>
                         <Button>Insert Video</Button>
                     </ButtonGroup>
