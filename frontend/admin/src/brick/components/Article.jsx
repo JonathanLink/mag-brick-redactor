@@ -16,6 +16,9 @@ import Textarea from "sq-web-components-core-react/forms/Textarea"
 import Button from "sq-web-components-core-react/forms/Button"
 import ButtonGroup from "sq-web-components-core-react/forms/ButtonGroup"
 
+import { Editor } from 'react-draft-wysiwyg';
+import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 const BLOCK_TEXT = 'TEXT'
 const BLOCK_IMAGE = 'IMAGE'
 const BLOCK_VIDEO = 'VIDEO'
@@ -52,7 +55,10 @@ class Article extends Component {
     getBlock = (blockType, key) => {
         switch (blockType) {
             case BLOCK_TEXT:
-                return <Textarea key={ key } size="large" />
+                return <div key={ key }><Textarea size="large" /></div>
+                break
+            case BLOCK_IMAGE:
+                return <div key={ key }>upload image</div>
                 break
         }
     }
@@ -64,7 +70,7 @@ class Article extends Component {
             return this.getBlock(blockType, index)
         })
 
-        return (
+        /*return (
             <Row>
                 <RowItem>
                     <FormItem>
@@ -77,7 +83,7 @@ class Article extends Component {
                 <RowItem style={ {textAlign: "center"} }>
                     <ButtonGroup>
                         <Button onClick={ () => this.insertBlock(BLOCK_TEXT) } >Insert Text</Button>
-                        <Button>Insert Image</Button>
+                        <Button onClick={ () => this.insertBlock(BLOCK_IMAGE) } >Insert Image</Button>
                         <Button>Insert Video</Button>
                     </ButtonGroup>
                 </RowItem>
@@ -88,7 +94,36 @@ class Article extends Component {
                     </ButtonGroup>
                 </RowItem>
             </Row>
-        )       
+        )  */
+        
+        const EditorComponent = () => <Editor toolbar={ { 
+            options: ['inline','list', 'link', 'embedded', 'image'],
+            inline: {
+                options: ['bold', 'italic'],
+            },
+            list: {
+                options: ['unordered', 'ordered'],
+            } 
+        }} />
+
+        return (
+            <Row>
+                <RowItem>
+                    <FormItem>
+                        <Input style={ {fontSize: "1.2rem", fontWeight: "bold"} } size="large" name="article-title" placeholder="Type the headline of your article here" />
+                    </FormItem>
+                    <FormItem>
+                        { EditorComponent() }
+                    </FormItem>
+                </RowItem>
+                <RowItem style={ {float: "right", marginTop: "3rem"} }>
+                    <ButtonGroup>
+                        <Button>Save for later</Button>
+                        <Button level="success" onClick={ this.publish } >Publish</Button>
+                    </ButtonGroup>
+                </RowItem>
+            </Row> 
+        )
   }
 }
 
