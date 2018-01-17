@@ -32,7 +32,7 @@ let config = {
             { 
                 test: /\.jsx?$/, 
                 loader: 'babel-loader', 
-                exclude: /node_modules/ 
+                exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/
             },
             {
                 test: /\.less$/,
@@ -62,6 +62,9 @@ let config = {
         ]
     },
     plugins: [
+        new Webpack.ProvidePlugin({
+            'window.Quill': 'quill'
+        }),
         new Webpack.optimize.CommonsChunkPlugin({
             names: 'vendor',
             filename: 'vendor.js',

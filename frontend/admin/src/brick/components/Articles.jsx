@@ -26,7 +26,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('api/brick/redactor/articles')
+                response = await fetch('http://' + ((true) ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
             } catch(err) {
                 console.log(err)
             }
@@ -47,7 +47,7 @@ class Articles extends Component {
         return this.state.articles.map( (article, index) => {
             return (
                 <ListItem key={index}>
-                    <Badge level="success"></Badge> { article.title }
+                    <Badge level="success"></Badge> <Link to={"/article/" + article._id}>{ article.title }</Link>
                 </ListItem>
             )
         })
@@ -56,23 +56,20 @@ class Articles extends Component {
     render() {
         return (
             <Row>
-                <RowItem>
+                <RowItem style={ { textAlign: "right"} } >
                     <Link to={ '/article/' } >
-                        <Button block size="large">Write an Article</Button>
+                        <Button level="success">Write an Article</Button>
                     </Link>
                 </RowItem>
                 <RowItem>
                     <List divided size="large"> 
-                        <ListItem style={{fontSize: "0.9rem", textAlign: "right"}}>
+                        <ListItem style={{fontSize: "0.9rem", textAlign: "left"}}>
                             <Badge size="small" level="success"></Badge> published
                             &nbsp;
                             <Badge size="small" level="info"></Badge> draft
                         </ListItem>
                         {this.getArticlesComponents()}
                     </List>
-                </RowItem>
-                <RowItem style={{fontSize: "2em", textAlign: "center"}}>
-                    <IconMoreHorizontal/>
                 </RowItem>
             </Row>
         )
