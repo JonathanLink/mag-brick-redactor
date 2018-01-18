@@ -26,7 +26,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('http://' + ((true) ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
+                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
             } catch(err) {
                 console.log(err)
             }
@@ -47,7 +47,7 @@ class Articles extends Component {
         return this.state.articles.map( (article, index) => {
             return (
                 <ListItem key={index}>
-                    <Badge level="success"></Badge> <Link to={"/article/" + article._id}>{ article.title }</Link>
+                    <Badge level={ (article.isPosted) ? "success": "info" }></Badge> <Link to={"/article/" + article._id}>{ article.title }</Link>
                 </ListItem>
             )
         })
@@ -68,7 +68,7 @@ class Articles extends Component {
                             &nbsp;
                             <Badge size="small" level="info"></Badge> draft
                         </ListItem>
-                        {this.getArticlesComponents()}
+                        { this.getArticlesComponents() }
                     </List>
                 </RowItem>
             </Row>

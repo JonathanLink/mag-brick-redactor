@@ -7,6 +7,7 @@ const schema = mongoose.Schema({
     cover: { type: String, default: false },
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
+    displayed: Number
 })
 
 module.exports = mongoose.model('Article', schema)

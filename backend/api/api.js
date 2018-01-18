@@ -12,6 +12,11 @@ const API = {
                 path: '/articles',
                 handler: routes.list
             },
+            { 
+                method: 'GET',
+                path: '/public/articles',
+                handler: routes.publicList
+            },
             {
                 method: 'GET',
                 path: '/article/{id}',
@@ -23,6 +28,21 @@ const API = {
                     }
                 },
                 handler: routes.article
+            },
+            { 
+                method: 'PUT',
+                path: '/article/{id}',
+                handler: routes.update
+            },
+            { 
+                method: 'PUT',
+                path: '/article/display/{id}',
+                handler: routes.display
+            },
+            { 
+                method: 'DELETE',
+                path: '/article/{id}',
+                handler: routes.remove
             }]
 }
 
