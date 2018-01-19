@@ -1,5 +1,7 @@
 const Webpack = require('webpack')
+const merge = require('webpack-merge')
 const path = require('path')
+const brick = require('./src/brick/webpack.brick.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -32,7 +34,7 @@ let config = {
             { 
                 test: /\.jsx?$/, 
                 loader: 'babel-loader', 
-                exclude: /node_modules/ 
+                exclude: /node_modules/
             },
             {
                 test: /\.less$/,
@@ -81,13 +83,13 @@ let config = {
             minRatio: 0.8
         }),
         new BundleAnalyzerPlugin({analyzerMode: 'static', openAnalyzer: false})
-    ]/*,
+    ],
     devServer: {
         contentBase: [path.resolve(__dirname, './dist'), path.resolve(__dirname, './dev_server/sq-web-components-core-theme')],
         host: 'localhost',
         historyApiFallback: true,
         port: 8080
-    }*/
+    }
 }
 
-module.exports = config
+module.exports = merge(brick, config)

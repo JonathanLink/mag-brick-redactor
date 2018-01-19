@@ -1,5 +1,7 @@
 const Webpack = require('webpack')
+const merge = require('webpack-merge')
 const path = require('path')
+const brick = require('./src/brick/webpack.brick.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -32,7 +34,7 @@ let config = {
             { 
                 test: /\.jsx?$/, 
                 loader: 'babel-loader', 
-                exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/
+                exclude: /node_modules/
             },
             {
                 test: /\.less$/,
@@ -62,9 +64,6 @@ let config = {
         ]
     },
     plugins: [
-        new Webpack.ProvidePlugin({
-            'window.Quill': 'quill'
-        }),
         new Webpack.optimize.CommonsChunkPlugin({
             names: 'vendor',
             filename: 'vendor.js',
@@ -93,4 +92,4 @@ let config = {
     }
 }
 
-module.exports = config
+module.exports = merge(brick, config)

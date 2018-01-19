@@ -23,7 +23,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('/api/brick/redactor/articles')
+                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
             } catch(err) {
                 console.log(err)
             }
@@ -53,7 +53,7 @@ class Articles extends Component {
             return (
                 <RowItem xs={xs} sm={sm} md={md} lg={lg} key={article._id}>
                     <Card>
-                        <CardMedia src={matt} />
+                        <CardMedia src={ article.cover} />
                         <CardItem>
                             <Heading size="xlarge">{ article.title }</Heading>
                             <Heading size="small">{ new Date(article.created).toLocaleDateString() } </Heading>

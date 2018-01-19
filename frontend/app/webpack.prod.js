@@ -7,7 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 let config = {
     output: {
-        publicPath: '/'
+        publicPath: '/admin'
     },
     devtool: 'cheap-module-source-map',
     plugins: [

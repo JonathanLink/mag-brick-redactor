@@ -18,7 +18,7 @@ import 'sq-web-icons/icons.css'
 import './styles.css'
 import '../src/brick/assets/styles.css'
 
-import brick from '../src/brick/brick.js'
+import brick from '../src/brick/routes.js'
 
 class App extends Component {
 
