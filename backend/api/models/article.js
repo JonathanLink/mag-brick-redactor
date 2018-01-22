@@ -5,6 +5,7 @@ const schema = mongoose.Schema({
     content: String,
     isPosted: { type: Boolean, required: true, default: false },
     cover: { type: String, default: false },
+    intro: { type: String, required: false, max: 500 },
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
     displayed: Number

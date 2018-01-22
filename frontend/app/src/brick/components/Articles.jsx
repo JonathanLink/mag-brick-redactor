@@ -7,6 +7,7 @@ import Heading from 'sq-web-components-core-react/elements/Heading'
 import Dialog, {DialogHeader, DialogContent, DialogFooter  } from 'sq-web-components-core-react/collections/Dialog'
 import Row, {RowItem} from 'sq-web-components-core-react/collections/Row'
 import Checkbox from 'sq-web-components-core-react/forms/Checkbox'
+import Badge from 'sq-web-components-core-react/elements/Badge'
 
 class Articles extends Component {
     
@@ -23,7 +24,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
+                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/public/articles')
             } catch(err) {
                 console.log(err)
             }
@@ -42,24 +43,30 @@ class Articles extends Component {
 
     getArticlesComponents = () => {
         return this.state.articles.map( (article, index) => {
-            var xs = 12, sm = 6, md = 4, lg = 4
+            var xs = 12, sm = 4, md = 4
             if (index === 0) {
                 sm = 12
-                md = 9
-                lg = 8
+                md = 8
             } else if (index === 1) {
-                md = 3
+                md = 4
             }
+        
+            let coverImage = (article.cover) ? <CardMedia src={ article.cover } /> : ""
+
+            let trendingBadge = ( index == 2 || index == 6) ?  <Badge size="small" level="error">trending</Badge> : ""
+
             return (
-                <RowItem xs={xs} sm={sm} md={md} lg={lg} key={article._id}>
+               
+                <RowItem xs={xs} sm={sm} md={md} key={article._id}  className="article">
                     <Card>
-                        <CardMedia src={ article.cover} />
+                        { coverImage }
                         <CardItem>
+                            { trendingBadge }
                             <Heading size="xlarge">{ article.title }</Heading>
                             <Heading size="small">{ new Date(article.created).toLocaleDateString() } </Heading>
                         </CardItem>
                         <CardItem>
-                            <p>Swissquote Group Holding Ltd and its subsidiaries provide Online Financial Services that mainly consist of the services provided by Swissquote Bank Ltd through its financial web portal www.swissquote.ch.</p>
+                            <p>{ article.intro }</p>
                         </CardItem>
                         <CardActions>
                             <Link to={ 'article/' + article._id } >
@@ -68,6 +75,25 @@ class Articles extends Component {
                         </CardActions>
                     </Card>
                 </RowItem>
+            
+                /*<div style={ (index === 0) ? {flexGrow: "3"} : {flexGrow: "1"} } >
+                    <Card>
+                        { coverImage }
+                        <CardItem>
+                            <Heading size="xlarge">{ article.title }</Heading>
+                            <Heading size="small">{ new Date(article.created).toLocaleDateString() } </Heading>
+                        </CardItem>
+                        <CardItem>
+                            <p>{ article.intro }</p>
+                        </CardItem>
+                        <CardActions>
+                            <Link to={ 'article/' + article._id } >
+                                <Button variant="text">Read more</Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </div>*/
+
             )
         })
     }
@@ -75,6 +101,7 @@ class Articles extends Component {
 
     render() {
         return ( <Row> {this.getArticlesComponents()} </Row> )
+       //return ( <div style={ {display: "flex", flexWrap: "wrap"} }> {this.getArticlesComponents()} </div> )
   }
 }
 

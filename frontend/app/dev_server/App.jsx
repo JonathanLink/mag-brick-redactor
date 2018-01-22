@@ -50,8 +50,8 @@ class App extends Component {
         }
     }
 
-    registerBrickView = (path, history) => {
-        this.setState({isBackButtonVisible: ('/' !== path)}) // (brick.routes[0].path
+    registerBrickView = (history, isEntryPoint=false) => {
+        this.setState( {isBackButtonVisible: !isEntryPoint } ) 
         this.setState({history: history})
     }
 
@@ -79,7 +79,7 @@ class App extends Component {
                             <NavbarItem onClick={this.goBack}><IconArrowback /></NavbarItem>
                         </Nav>
                     </Navbar>
-                    <div className="container" style={{marginTop: (this.state.isBackButtonVisible) ? "7.5em" : "4.5em" }}>
+                    <div className="container" style={{marginTop: (this.state.isBackButtonVisible) ? "7.5em" : "10.5em" }}>
                         <div className={menuClass} >
                             <div className="Drawer__container">
                                 <div className="Drawer__header">

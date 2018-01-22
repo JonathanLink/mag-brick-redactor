@@ -14,6 +14,8 @@ module.exports.update = async function update(request, h) {
         {
             title: articleObject.title,
             content: articleObject.content,
+            intro: articleObject.intro,
+            cover: articleObject.cover,
             isPosted: articleObject.isPosted
         }
     )

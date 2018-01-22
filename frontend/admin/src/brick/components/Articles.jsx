@@ -63,7 +63,7 @@ class Articles extends Component {
                         <Button level="success">Write an Article</Button>
                     </Link>
                 </RowItem>
-                <RowItem>
+                <RowItem style={{ marginTop: "5rem"}} >
                     <List divided size="large"> 
                         <ListItem style={{fontSize: "0.9rem", textAlign: "left"}}>
                             <Badge size="small" level="success"></Badge> published

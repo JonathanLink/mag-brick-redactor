@@ -13,39 +13,58 @@
     font-size: 3.5rem;
 }
 
+.Heading--small {
+    font-size: .675rem;
+    font-weight: 200;
+}
+
+
 @media screen and (min-width: 720px) {
     
+
     .article > .Card {
-        width: 40rem;
+        width: 100%;
         margin: 0 auto;
+        margin: 0.7rem;
      }
+
+     
 
     .article >  .article-cover {
         width: 55rem;
         display: block;
         margin: 0 auto;
     }
+
+    .article:nth-child(3n + 5) {
+        clear: left;
+        /*background: red;*/
+    }
+
 }
 
-@media only screen and (max-width: 720px)  {
+
+@media only screen and (min-width: 991px)  {
     .article > .Card {
-       margin: 0.7rem;
+       width: 100%;
+       margin-bottom: 0;
     }
+
+    .article:nth-child(3n + 6) {
+        clear: left;
+       /* background: yellow;*/
+    }
+
+    .article:nth-child(2) {
+        height: 600px;
+    }
+
+    .article:nth-child(3n + 5) {
+        clear: none;
+    }
+    
 }
 
-
-@media only screen and (min-width: 920px)  {
-    .article > .Card {
-       width: 50rem;
-    }
-}
-
-@media only screen and (min-width: 1200px)  {
-    .article > .article-cover {
-        display: block;
-        margin: 0 auto;
-    }
-}
 
 
 

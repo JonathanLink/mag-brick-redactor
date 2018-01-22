@@ -23,7 +23,7 @@ class Article extends Component {
             <img className="article-cover" src={matt}/>
             <Card>
                 <CardItem>
-                    <Badge size="small" level="error">breaking news</Badge>
+                    <Badge size="small" level="error">trending</Badge>
                     <Heading size="xlarge">{ this.props.match.params.id }</Heading>
                     <Heading size="small">{ new Date().toLocaleDateString() }</Heading>
                 </CardItem>

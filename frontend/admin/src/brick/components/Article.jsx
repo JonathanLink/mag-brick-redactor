@@ -48,6 +48,8 @@ class Article extends Component {
         this.article.title = ''
         this.article.content = ''
         this.article.cover = ''
+        this.article.intro = ''
+
         this.state = {title: '', content: '', editMode: false}
         //this.state = { text: '', content: '', coverImage: '' } // You can also pass a Quill Delta here
         this.handleChange = this.handleChange.bind(this)
@@ -93,14 +95,31 @@ class Article extends Component {
 
    
     handleChange(content, delta, source, editor) {
+        // content
         this.article.content = content
         this.setState( {content: content } )
+        
+        // cover
         const REGEX = /<img[^>]*src="([^"]*)"/g
         const match = REGEX.exec(content)
         if (match && match.length > 0) {
             const coverImage = match[1]
             this.article.cover = coverImage
+        } else {
+            this.article.cover = ""
         }
+
+        // intro text
+        const REGEX_REMOVE_IMG = /<img[^>]+\>/gi
+        let tmpContent = content.replace(REGEX_REMOVE_IMG, '')
+        tmpContent = tmpContent.replace(`<p><br></p><p>`, '')
+        tmpContent = tmpContent.substring(0,200)
+        tmpContent = tmpContent.substring(0, tmpContent.lastIndexOf('.') + 1 )
+        tmpContent = tmpContent + "</p>"
+        let div = document.createElement("div")
+        div.innerHTML = tmpContent
+        this.article.intro = div.innerText
+
     }
 
 
@@ -109,7 +128,7 @@ class Article extends Component {
             let request
             try {
                 const articleId = this.props.match.params.id
-                this.article.isPosted = true
+                this.article.isPosted = isPosted
                 console.log(this.article)
                 request = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/' + articleId, {method: "PUT", body: JSON.stringify(this.article) })
             } catch(err) {
@@ -119,6 +138,7 @@ class Article extends Component {
         } else {
             let request
             try {
+                this.article.isPosted = isPosted
                 request = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article', {method: "POST", body: JSON.stringify(this.article) })
             } catch(err) {
                 console.log(err)
