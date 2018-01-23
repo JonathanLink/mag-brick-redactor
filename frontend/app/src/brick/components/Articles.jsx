@@ -98,7 +98,7 @@ class Articles extends Component {
 
     render() {
         const numberOfArticles = this.state.articles.length
-        return ( <Row> { (numberOfArticles < 0) ? this.getArticlesComponents() : this.displayNoArticleMessage()} </Row> )
+        return ( <Row> { (numberOfArticles > 0) ? this.getArticlesComponents() : this.displayNoArticleMessage()} </Row> )
 
   }
 }
