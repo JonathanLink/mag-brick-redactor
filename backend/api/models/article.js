@@ -8,7 +8,7 @@ const schema = mongoose.Schema({
     intro: { type: String, required: false, max: 500 },
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
-    displayed: Number
+    views: Number
 })
 
 module.exports = mongoose.model('Article', schema)

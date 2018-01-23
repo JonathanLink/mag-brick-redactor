@@ -42,7 +42,17 @@ class Articles extends Component {
 
 
     getArticlesComponents = () => {
+
+        // sort 'most read' articles and get the first three of them
+        var trending = this.state.articles.slice()
+        trending = trending.sort((a,b) => {
+            a.views = (!a.views) ? 0 : a.views
+            b.views = (!b.views) ? 0 : b.views
+            return b.views - a.views
+        }).map( a => a._id).slice(0, 3)
+
         return this.state.articles.map( (article, index) => {
+
             var xs = 12, sm = 4, md = 4
             if (index === 0) {
                 sm = 12
@@ -53,7 +63,7 @@ class Articles extends Component {
         
             let coverImage = (article.cover) ? <CardMedia src={ article.cover } /> : ""
 
-            let trendingBadge = ( index == 2 || index == 6) ?  <Badge size="small" level="error">trending</Badge> : ""
+            let trendingBadge = ( trending.indexOf(article._id) > -1 && article.views > 3 ) ? <Badge size="small" level="error">most read</Badge> : ""
 
             return (
                
@@ -70,38 +80,26 @@ class Articles extends Component {
                         </CardItem>
                         <CardActions>
                             <Link to={ 'article/' + article._id } >
-                                <Button variant="text">Read more</Button>
+                                <Button variant="text" className="read-more-button" >Read more</Button>
                             </Link>
                         </CardActions>
                     </Card>
                 </RowItem>
             
-                /*<div style={ (index === 0) ? {flexGrow: "3"} : {flexGrow: "1"} } >
-                    <Card>
-                        { coverImage }
-                        <CardItem>
-                            <Heading size="xlarge">{ article.title }</Heading>
-                            <Heading size="small">{ new Date(article.created).toLocaleDateString() } </Heading>
-                        </CardItem>
-                        <CardItem>
-                            <p>{ article.intro }</p>
-                        </CardItem>
-                        <CardActions>
-                            <Link to={ 'article/' + article._id } >
-                                <Button variant="text">Read more</Button>
-                            </Link>
-                        </CardActions>
-                    </Card>
-                </div>*/
+              
 
             )
         })
     }
 
+    displayNoArticleMessage = () => {
+        return (<div style={{textAlign: "center", fontSize: "2rem"}}>No article for the moment <br/> <span style={{fontSize:"1.5rem"}}>Maybe later...</span></div>)
+    }
 
     render() {
-        return ( <Row> {this.getArticlesComponents()} </Row> )
-       //return ( <div style={ {display: "flex", flexWrap: "wrap"} }> {this.getArticlesComponents()} </div> )
+        const numberOfArticles = this.state.articles.length
+        return ( <Row> { (numberOfArticles < 0) ? this.getArticlesComponents() : this.displayNoArticleMessage()} </Row> )
+
   }
 }
 

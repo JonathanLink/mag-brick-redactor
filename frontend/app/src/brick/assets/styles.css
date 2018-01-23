@@ -1,6 +1,6 @@
 .article > .Card {
     top: -4rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     transition: width 0.2s;
 }
 
@@ -18,6 +18,26 @@
     font-weight: 200;
 }
 
+.trending-list-item {
+    width: 100%;
+    vertical-align: text-top;
+    margin-bottom: 2rem;
+}
+
+.trending-list-item a {
+    text-decoration: none;
+}
+
+
+.read-more-button {
+    text-decoration: none;
+    font-size: 1rem;
+    border: 0.05rem solid lightgray;    
+}
+
+.read-more-button:hover {
+    text-decoration: none;
+}
 
 @media screen and (min-width: 720px) {
     
@@ -25,10 +45,8 @@
     .article > .Card {
         width: 100%;
         margin: 0 auto;
-        margin: 0.7rem;
+        margin-bottom: 1rem;
      }
-
-     
 
     .article >  .article-cover {
         width: 55rem;
@@ -41,18 +59,29 @@
         /*background: red;*/
     }
 
+    .article-title {
+        font-size: 1.8rem;
+    }
+
+    .article-footer {
+        width: 50%;
+    }
+
+    .trending-list-item {
+        width: 33.333%;
+    }
+    
 }
 
 
 @media only screen and (min-width: 991px)  {
     .article > .Card {
        width: 100%;
-       margin-bottom: 0;
     }
 
-    .article:nth-child(3n + 6) {
+    .article:nth-child(3n + 3) {
         clear: left;
-       /* background: yellow;*/
+       /*background: yellow;*/
     }
 
     .article:nth-child(2) {
@@ -62,7 +91,7 @@
     .article:nth-child(3n + 5) {
         clear: none;
     }
-    
+
 }
 
 

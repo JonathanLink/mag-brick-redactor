@@ -17,6 +17,11 @@ const API = {
                 path: '/public/articles',
                 handler: routes.publicList
             },
+            { 
+                method: 'GET',
+                path: '/public/trending',
+                handler: routes.trending
+            },
             {
                 method: 'GET',
                 path: '/article/{id}',
@@ -36,8 +41,8 @@ const API = {
             },
             { 
                 method: 'PUT',
-                path: '/article/display/{id}',
-                handler: routes.display
+                path: '/article/views/{id}',
+                handler: routes.views
             },
             { 
                 method: 'DELETE',

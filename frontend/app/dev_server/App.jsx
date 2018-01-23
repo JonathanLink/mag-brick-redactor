@@ -17,6 +17,7 @@ import Heading from "sq-web-components-core-react/elements/Heading"
 import 'sq-web-icons/icons.css'
 import './styles.css'
 import '../src/brick/assets/styles.css'
+import '../src/brick/assets/custom.css'
 
 import brick from '../src/brick/routes.js'
 
@@ -70,7 +71,7 @@ class App extends Component {
                 <div>
                     <Navbar app fixed position="top" style={navClass}> 
                         <Nav>
-                            <NavbarItem><Heading size="xlarge">my app</Heading></NavbarItem>
+                            <NavbarItem><Heading size="xlarge" className="heading-app-name">my app</Heading></NavbarItem>
                         </Nav>
                         <NavbarSection pullRight>
                             <NavbarItem onClick={this.toggleMenu} style={{fontSize: "2rem", position:"relative", top:"-1rem"}}><IconMenu/></NavbarItem>
@@ -100,23 +101,32 @@ class App extends Component {
                                 </div>
                             </div>
                         </div>
-                        <AnimatedSwitch  
-                            atEnter={{ opacity: 0 }}
-                            atLeave={{ opacity: 0 }}
-                            atActive={{ opacity: 1 }}
-                            className="switch-wrapper"
-                        >
-                            {brick.routes.map((route, index) => 
-                                <Route key={index} exact path={(index == 0) ? '/' : route.path} 
-                                    render={ (props) => {
-                                            props.registerBrickView = this.registerBrickView
-                                            return React.createElement(route.component, props)
+
+                       
+                            <AnimatedSwitch  
+                                atEnter={{ opacity: 0 }}
+                                atLeave={{ opacity: 0 }}
+                                atActive={{ opacity: 1 }}
+                                className="switch-wrapper"
+                            >
+                                {brick.routes.map((route, index) => 
+                                    <Route key={index} exact path={(index == 0) ? '/' : route.path} 
+                                        render={ (props) => {
+                                                props.registerBrickView = this.registerBrickView
+                                                return React.createElement(route.component, props)
+                                            }
                                         }
-                                    }
-                                />
-                            )}
-                        </AnimatedSwitch>
+                                    />
+                                )}
+                            </AnimatedSwitch>
+                        
+
                     </div>
+                   
+                    <div style={{clear: "both", background: "lightgray", textAlign: "center"}}>
+                        <span style={ {fontSize: "0.7rem"} }>the present app has been created with ease and joy thanks to MAG - check it out, it's free and vegan friendly!</span>
+                    </div>
+
                 </div> 
             </Router>
         )

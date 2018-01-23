@@ -113,15 +113,16 @@ class Article extends Component {
         const REGEX_REMOVE_IMG = /<img[^>]+\>/gi
         let tmpContent = content.replace(REGEX_REMOVE_IMG, '')
         tmpContent = tmpContent.replace(`<p><br></p><p>`, '')
-        tmpContent = tmpContent.substring(0,200)
+        tmpContent = tmpContent.substring(0,400)
         tmpContent = tmpContent.substring(0, tmpContent.lastIndexOf('.') + 1 )
+        console.log(tmpContent)
         tmpContent = tmpContent + "</p>"
         let div = document.createElement("div")
         div.innerHTML = tmpContent
         this.article.intro = div.innerText
+        
 
     }
-
 
     publish = async (isPosted=true) => {
         if (this.state.editMode) {
@@ -166,7 +167,7 @@ class Article extends Component {
         return (
             <Row>
                 <RowItem>
-                        <Input value={ this.state.title } onChange={ (event) => this.setTitle(event) } style={ {fontSize: "1.5rem", border: "0"} } size="large" name="article-title" placeholder="Type the headline of your article here" />
+                        <Input value={ this.state.title } onChange={ (event) => this.setTitle(event) } style={ {fontSize: "1.5rem", border: "0", marginLeft: "2rem",  marginRight: "3rem"} } size="large" name="article-title" placeholder="Type the headline of your article here" />
                         <ReactQuill 
                             modules={ modules }
                             formats={ formats }

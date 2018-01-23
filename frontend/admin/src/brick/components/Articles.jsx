@@ -64,7 +64,7 @@ class Articles extends Component {
                     </Link>
                 </RowItem>
                 <RowItem style={{ marginTop: "5rem"}} >
-                    <List divided size="large"> 
+                    <List divided size="large" className="articles-list"> 
                         <ListItem style={{fontSize: "0.9rem", textAlign: "left"}}>
                             <Badge size="small" level="success"></Badge> published
                             &nbsp;

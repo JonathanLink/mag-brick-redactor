@@ -7,7 +7,7 @@ const API = require('./api/api.js')
 const server = Hapi.Server({ 
     host: '0.0.0.0', 
     port: 8000,
-    routes: {cors: {origin: ['*'] }}
+    routes: {cors: { origin: ['*'] }}
 })
 
 
@@ -31,27 +31,6 @@ async function main() {
     } catch (err) {
         console.log(err)
     }
-
-    /*server.route({
-        method: 'GET',
-        path:'/', 
-        handler: (request, h) => {
-            let html = `<h2>DEV API FOR BRICK DEVELOPMENT</h2>`
-            let apiList = brickRoutes.map(r => `[${r.method}] <a href="${r.path}">${r.path}</a><br>`).join(' ')
-            html = html + apiList
-            return html
-        }
-    })*/
- 
-
-    /*server.path('./public/');
-    server.route({
-        method: 'GET',
-        path: '/a',
-        handler: (request, h) => {
-            return h.file('a.html')
-        }
-    })*/
 
      // Create a server with a host and port
     try {

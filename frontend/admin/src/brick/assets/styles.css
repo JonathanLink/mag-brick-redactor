@@ -1,3 +1,8 @@
 .ql-editor {
     font-size: 0.9rem;
+    padding: 3rem;
+}
+
+.articles-list a {
+    text-decoration: none;
 }

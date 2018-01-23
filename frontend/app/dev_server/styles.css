@@ -29,5 +29,9 @@
 }
   
 .switch-wrapper > div {
-    position: absolute;
+    position: relative;
+}
+
+.heading-app-name{
+    font-weight: 100;
 }
