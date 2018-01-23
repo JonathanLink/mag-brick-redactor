@@ -7,7 +7,7 @@ import {IconSentimentSatisfied, IconSentimentNeutral, IconSentimentDissatisfied,
 import MediaObject, {MediaObjectMedia, MediaObjectImage,MediaObjectContent} from "sq-web-components-core-react/collections/MediaObject"
 import List, { ListItem } from "sq-web-components-core-react/collections/List"
 import matt from '../assets/images/catalan2.jpg'
-
+import '../assets/custom.css'
 
 class Article extends Component {
 
@@ -78,10 +78,10 @@ class Article extends Component {
     render() {
         
         const trending = this.state.trending.map( (article, index) =>  (<ListItem key={index} className="trending-list-item">   
-                            <Link to={ 'article/' + article._id } >    
+                            <a href={ '/article/' + article._id } >    
                                 <Heading size="large" style={{marginBottom: "1rem"}}>{article.title}</Heading>
                                 {article.intro}
-                            </Link>
+                            </a>
                         </ListItem>))
 
 

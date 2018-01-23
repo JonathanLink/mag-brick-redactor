@@ -8,6 +8,7 @@ import Dialog, {DialogHeader, DialogContent, DialogFooter  } from 'sq-web-compon
 import Row, {RowItem} from 'sq-web-components-core-react/collections/Row'
 import Checkbox from 'sq-web-components-core-react/forms/Checkbox'
 import Badge from 'sq-web-components-core-react/elements/Badge'
+import '../assets/custom.css'
 
 class Articles extends Component {
     

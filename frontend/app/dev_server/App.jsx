@@ -17,7 +17,7 @@ import Heading from "sq-web-components-core-react/elements/Heading"
 import 'sq-web-icons/icons.css'
 import './styles.css'
 import '../src/brick/assets/styles.css'
-import '../src/brick/assets/custom.css'
+
 
 import brick from '../src/brick/routes.js'
 
