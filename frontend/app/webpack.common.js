@@ -85,7 +85,7 @@ let config = {
         new BundleAnalyzerPlugin({analyzerMode: 'static', openAnalyzer: false})
     ],
     devServer: {
-        contentBase: [path.resolve(__dirname, './dist'), path.resolve(__dirname, './dev_server/sq-web-components-core-theme')],
+        contentBase: [path.resolve(__dirname, './dist')],
         host: 'localhost',
         historyApiFallback: true,
         port: 8080

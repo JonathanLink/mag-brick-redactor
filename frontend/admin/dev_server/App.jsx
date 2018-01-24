@@ -13,6 +13,7 @@ import Row, {RowItem} from 'sq-web-components-core-react/collections/Row'
 import List, {ListItem} from 'sq-web-components-core-react/collections/List'
 import {IconMenu, IconArrowback} from 'sq-web-icons'
 import Heading from "sq-web-components-core-react/elements/Heading"
+import Dashboard from './Dashboard'
 
 import 'sq-web-icons/icons.css'
 import './styles.css'
@@ -70,7 +71,7 @@ class App extends Component {
                 <div>
                     <Navbar app fixed position="top" style={navClass}> 
                         <Nav>
-                            <NavbarItem><Heading size="xlarge">admin</Heading></NavbarItem>
+                            <NavbarItem><Heading size="xlarge" className="heading-app-name">admin</Heading></NavbarItem>
                         </Nav>
                         <NavbarSection pullRight>
                             <NavbarItem onClick={this.toggleMenu} style={{fontSize: "2rem", position:"relative", top:"-1rem"}}><IconMenu/></NavbarItem>
@@ -97,6 +98,7 @@ class App extends Component {
                             </div>
                         </div>
                         <Switch>
+                            <Route exact path="/" component={ Dashboard } />
                             {brick.routes.map((route, index) => <Route key={ index } exact path={ route.path }  render={ (props) => { props.registerBrickView = this.registerBrickView; return React.createElement(route.component, props); } } /> )}
                         </Switch>
                     </div>

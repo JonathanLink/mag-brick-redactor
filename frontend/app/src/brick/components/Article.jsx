@@ -6,7 +6,6 @@ import Badge from 'sq-web-components-core-react/elements/Badge'
 import {IconSentimentSatisfied, IconSentimentNeutral, IconSentimentDissatisfied, IconArrowup } from "sq-web-icons"
 import MediaObject, {MediaObjectMedia, MediaObjectImage,MediaObjectContent} from "sq-web-components-core-react/collections/MediaObject"
 import List, { ListItem } from "sq-web-components-core-react/collections/List"
-import matt from '../assets/images/catalan2.jpg'
 import '../assets/custom.css'
 
 class Article extends Component {

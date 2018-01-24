@@ -17,6 +17,8 @@ import 'react-quill/dist/quill.bubble.css'
 import { ImageDrop } from 'quill-image-drop-module'
 import ImageResize from 'quill-image-resize-module'
 
+import '../assets/styles.css'
+
 Quill.register('modules/imageDrop', ImageDrop)
 Quill.register('modules/imageResize', ImageResize)
 

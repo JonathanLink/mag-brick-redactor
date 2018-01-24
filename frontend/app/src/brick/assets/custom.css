@@ -1,0 +1,6 @@
+.read-more-button {
+    text-decoration: none;
+    font-size: 1rem;
+    /*border: 0.05rem solid @@PRIMARY_COLOR@@;  */  
+    background: lightgray; 
+}

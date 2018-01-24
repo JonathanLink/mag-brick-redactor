@@ -18,6 +18,6 @@ services:
     ports:
       - 27017
     volumes:
-      - @BASE_PATH@mag/mag-engine/apps/@APP_NAME@/bricks/redactor/database:/data/db # absolute path
+      - @BASE_PATH@mag/mag-engine/apps/@APP_NAME@/bricks/redactor/database-prod:/data/db # absolute path
 
       #/home/jlink/Documents/mag/mag-engine/apps

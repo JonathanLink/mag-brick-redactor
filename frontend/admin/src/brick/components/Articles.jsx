@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import matt from '../assets/images/catalan2.jpg'
 import Button from 'sq-web-components-core-react/forms/Button'
 import Card, {CardMedia, CardItem, CardActions, CardHeader, CardFooter, CardMenu } from 'sq-web-components-core-react/collections/Card'
 import Heading from 'sq-web-components-core-react/elements/Heading'
@@ -11,6 +10,8 @@ import List, { ListItem } from "sq-web-components-core-react/collections/List"
 import Badge from "sq-web-components-core-react/elements/Badge"
 import {IconMoreHorizontal} from "sq-web-icons"
 import { say }  from "cowsay"
+
+import '../assets/styles.css'
 
 class Articles extends Component {
     

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import './styles.css'
 //import './semantic-ui-less/semantic.less'
 //import './sq-web-components-core-theme/css/sq-web-components-core-theme.min.css'
 
