@@ -58,7 +58,7 @@ class Article extends Component {
     }
 
     componentWillMount() {
-        this.props.setBackButton('/articles', this.props.history)
+        this.props.setBackButton('/redactor/articles', this.props.history)
     }
 
     async componentDidMount() {
@@ -148,7 +148,7 @@ class Article extends Component {
             }
             console.log(request)
         }
-        this.props.history.push('/articles')
+        this.props.history.push('/redactor/articles')
     }
 
     delete = async () => {
@@ -161,7 +161,7 @@ class Article extends Component {
                 console.log(err)
             }
         }
-        this.props.history.push('/articles')
+        this.props.history.push('/redactor/articles')
     }
 
     render() {

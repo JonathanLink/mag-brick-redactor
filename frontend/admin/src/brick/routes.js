@@ -3,11 +3,11 @@ import Article from './components/Article'
 
 export default {
   routes: [{
-    path: '/articles',
+    path: '/redactor/articles',
     component: Articles,
   },
   {
-    path: '/article/:id?',
+    path: '/redactor/article/:id?',
     component: Article,
   }]
 }

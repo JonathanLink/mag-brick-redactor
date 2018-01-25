@@ -50,7 +50,7 @@ class Articles extends Component {
         return this.state.articles.map( (article, index) => {
             return (
                 <ListItem key={index}>
-                    <Badge level={ (article.isPosted) ? "success": "info" }></Badge> <Link to={"/article/" + article._id}>{ article.title }</Link>
+                    <Badge level={ (article.isPosted) ? "success": "info" }></Badge> <Link to={"/redactor/article/" + article._id}>{ article.title }</Link>
                 </ListItem>
             )
         })
@@ -60,7 +60,7 @@ class Articles extends Component {
         return (
             <Row>
                 <RowItem style={ { textAlign: "right"} } >
-                    <Link to={ '/article/' } >
+                    <Link to={ '/redactor/article/' } >
                         <Button level="success">Write an Article</Button>
                     </Link>
                 </RowItem>
