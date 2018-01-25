@@ -81,7 +81,7 @@ class Articles extends Component {
                             <p>{ article.intro }</p>
                         </CardItem>
                         <CardActions>
-                            <Link to={ 'article/' + article._id } >
+                            <Link to={ '/redactor/article/' + article._id } >
                                 <Button variant="text" className="read-more-button" >Read more</Button>
                             </Link>
                         </CardActions>

@@ -3,10 +3,10 @@ import Articles from './components/Articles'
 
 export default {
   routes: [{
-    path: '/articles',
+    path: '/redactor/articles',
     component: Articles,
   }, {
-    path: '/article/:id',
+    path: '/redactor/article/:id',
     component: Article,
   }]
 }

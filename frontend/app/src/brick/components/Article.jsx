@@ -17,8 +17,21 @@ class Article extends Component {
         this.state = { cover: "", title:"", content: "",  date: "", view: 0, trending: [] }
     }
 
+    async componentWillReceiveProps(nextProps) {
+        if (nextProps.match.params.id !== this.props.match.params.id) {
+            const articleId = nextProps.match.params.id
+            if (articleId) { 
+                await this.fetchArticle(articleId)
+            }
+            await this.incrementViews(articleId)
+            await this.fetchTrending(articleId)
+            window.scrollTo(0, 0);
+        }
+
+    }
+
     componentWillMount() {
-        this.props.setBackButton('/articles', this.props.history)
+        this.props.setBackButton('/redactor/articles', this.props.history)
         window.scrollTo(0, 0);
     }
 
@@ -78,11 +91,13 @@ class Article extends Component {
     
     render() {
         
-        const trending = this.state.trending.map( (article, index) =>  (<ListItem key={index} className="trending-list-item">   
-                            <a href={ '/article/' + article._id } >    
-                                <Heading size="large" style={{marginBottom: "1rem"}}>{article.title}</Heading>
-                                {article.intro}
-                            </a>
+        const trending = this.state.trending.map( (article, index) =>  (<ListItem key={index} className="trending-list-item">
+                            <Link to={ '/redactor/article/' + article._id } >
+                                <div>     
+                                    <Heading size="large" style={{marginBottom: "1rem"}}>{article.title}</Heading>
+                                    {article.intro}
+                                </div>
+                            </Link>
                         </ListItem>))
 
 
