@@ -52,13 +52,18 @@ class App extends Component {
         }
     }
 
-    registerBrickView = (history, isEntryPoint=false) => {
-        this.setState( {isBackButtonVisible: !isEntryPoint } ) 
-        this.setState({history: history})
+    setBackButton = (path, history=null) => {
+        if (! path ) {
+            this.setState( {isBackButtonVisible: false } ) 
+            return
+        }
+        this.setState( {isBackButtonVisible: true } ) 
+        this.setState( {history: history } ) 
+        this.setState( {backPath: path } ) 
     }
 
     goBack = () => {
-        this.state.history.goBack()
+        this.state.history.push(this.state.backPath)
     }
 
     render() {
@@ -99,7 +104,7 @@ class App extends Component {
                         </div>
                         <Switch>
                             <Route exact path="/" component={ Dashboard } />
-                            {brick.routes.map((route, index) => <Route key={ index } exact path={ route.path }  render={ (props) => { props.registerBrickView = this.registerBrickView; return React.createElement(route.component, props); } } /> )}
+                            {brick.routes.map((route, index) => <Route key={ index } exact path={ route.path }  render={ (props) => { props.setBackButton = this.setBackButton; return React.createElement(route.component, props); } } /> )}
                         </Switch>
                     </div>
                 </div> 

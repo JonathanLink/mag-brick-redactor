@@ -19,7 +19,7 @@ class Articles extends Component {
     }
 
     componentWillMount() {
-        this.props.registerBrickView(this.props.history, true)
+        this.props.setBackButton(false)
     }
 
     async componentDidMount() {

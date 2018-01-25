@@ -6,6 +6,8 @@ import Badge from 'sq-web-components-core-react/elements/Badge'
 import {IconSentimentSatisfied, IconSentimentNeutral, IconSentimentDissatisfied, IconArrowup } from "sq-web-icons"
 import MediaObject, {MediaObjectMedia, MediaObjectImage,MediaObjectContent} from "sq-web-components-core-react/collections/MediaObject"
 import List, { ListItem } from "sq-web-components-core-react/collections/List"
+
+import '../assets/styles.css'
 import '../assets/custom.css'
 
 class Article extends Component {
@@ -16,7 +18,7 @@ class Article extends Component {
     }
 
     componentWillMount() {
-        this.props.registerBrickView(this.props.history)
+        this.props.setBackButton('/articles', this.props.history)
         window.scrollTo(0, 0);
     }
 

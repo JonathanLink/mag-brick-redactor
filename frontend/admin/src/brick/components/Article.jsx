@@ -58,7 +58,7 @@ class Article extends Component {
     }
 
     componentWillMount() {
-        this.props.registerBrickView(this.props.history)
+        this.props.setBackButton('/articles', this.props.history)
     }
 
     async componentDidMount() {
@@ -116,8 +116,8 @@ class Article extends Component {
         let tmpContent = content.replace(REGEX_REMOVE_IMG, '')
         tmpContent = tmpContent.replace(`<p><br></p><p>`, '')
         tmpContent = tmpContent.substring(0,400)
-        tmpContent = tmpContent.substring(0, tmpContent.lastIndexOf('.') + 1 )
-        console.log(tmpContent)
+        let lastIndexOfDot = (tmpContent.lastIndexOf('.') <= 0) ? tmpContent.length : tmpContent.lastIndexOf('.')
+        tmpContent = tmpContent.substring(0, lastIndexOfDot + 1 )
         tmpContent = tmpContent + "</p>"
         let div = document.createElement("div")
         div.innerHTML = tmpContent
@@ -182,10 +182,10 @@ class Article extends Component {
                     
                 </RowItem>
                 <RowItem style={ {float: "right", marginTop: "3rem"} }>
-                { (!this.state.editMode) ? <span/> : <Button style={{left: "2rem", position: "absolute"}} level="error" onClick={ () => this.delete() } >Delete</Button> } 
+                { (!this.state.editMode) ? <span/> : <Button style={{marginRight: "2rem", position: "relative"}} level="error" onClick={ () => this.delete() } >Delete</Button> } 
                     <ButtonGroup>
                         { (this.article.isPosted) ? <span/> : <Button onClick={ () => this.publish(false) } >Save for later</Button> } 
-                        <Button level="success" onClick={ () => this.publish(true) } >{ (this.article.isPosted) ? "Update" : "Publish" }</Button>
+                        <Button level="success"  style={{marginRight: "2rem", position: "relative"}} onClick={ () => this.publish(true) } >{ (this.article.isPosted) ? "Update" : "Publish" }</Button>
                     </ButtonGroup>
                 </RowItem>
             </Row> 

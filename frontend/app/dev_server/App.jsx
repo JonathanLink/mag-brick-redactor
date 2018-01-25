@@ -51,13 +51,18 @@ class App extends Component {
         }
     }
 
-    registerBrickView = (history, isEntryPoint=false) => {
-        this.setState( {isBackButtonVisible: !isEntryPoint } ) 
-        this.setState({history: history})
+    setBackButton = (path, history=null) => {
+        if (! path ) {
+            this.setState( {isBackButtonVisible: false } ) 
+            return
+        }
+        this.setState( {isBackButtonVisible: true } ) 
+        this.setState( {history: history } ) 
+        this.setState( {backPath: path } ) 
     }
 
     goBack = () => {
-        this.state.history.goBack()
+        this.state.history.push(this.state.backPath)
     }
 
     render() {
@@ -110,9 +115,9 @@ class App extends Component {
                                 className="switch-wrapper"
                             >
                                 {brick.routes.map((route, index) => 
-                                    <Route key={index} exact path={(index == 0) ? '/' : route.path} 
+                                    <Route key={index} exact path={route.path} 
                                         render={ (props) => {
-                                                props.registerBrickView = this.registerBrickView
+                                                props.setBackButton = this.setBackButton
                                                 return React.createElement(route.component, props)
                                             }
                                         }
@@ -124,7 +129,7 @@ class App extends Component {
                     </div>
                    
                     <div style={{clear: "both", background: "lightgray", textAlign: "center"}}>
-                        <span style={ {fontSize: "0.7rem"} }>the present app has been created with ease and joy thanks to MAG - check it out, it's free and vegan friendly!</span>
+                        <span style={ {fontSize: "0.7rem"} }>the present app has been created with ease and joy thanks to MAG - check it out</span>
                     </div>
 
                 </div> 
