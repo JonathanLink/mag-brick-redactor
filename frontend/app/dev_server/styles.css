@@ -1,7 +1,5 @@
 .container {
-    margin-top: 4.5em;
     padding: 0.1em;
-    padding-bottom: 5em;
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 900px;
@@ -24,12 +22,29 @@
     }
 }
 
+
 .switch-wrapper {
-    position: relative;
+    position: absolute;
 }
   
 .switch-wrapper > div {
-    position: relative;
+    position: absolute;
+    width: 100%;
+}
+
+.Drawer .List__item > a {
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* custom color */
+.Drawer__container {
+    background-color: #d3d3d3;
+}
+
+.Navbar--app {
+    border-bottom: 0.1rem solid #d3d3d3; 
 }
 
 .heading-app-name {

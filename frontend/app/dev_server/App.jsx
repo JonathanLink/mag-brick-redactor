@@ -16,129 +16,117 @@ import Heading from "sq-web-components-core-react/elements/Heading"
 
 import 'sq-web-icons/icons.css'
 import './styles.css'
-import '../src/brick/assets/styles.css'
+
 
 
 import brick from '../src/brick/routes.js'
 
+
 class App extends Component {
-
-
-    constructor() {
-        super()
-        this.state = {
-            isMenuOpen: false, 
-            previousScrollY: 0, 
-            isNavBarHidden: false,
-            isBackButtonVisible: false
-        }
-        window.onscroll = this.toggleNavBar
-    }
-
-    toggleMenu = () => this.setState({isMenuOpen: !this.state.isMenuOpen })
     
-    toggleNavBar = () => {
-        const scrollYAbs = window.scrollY - this.state.previousScrollY
-        this.setState({previousScrollY: window.scrollY})
-        if (window.scrollY > 10) {
-            if (scrollYAbs < 0) {
-                this.setState({isNavBarHidden: false})
-            } else {
-                this.setState({isNavBarHidden: true})
+    
+        constructor() {
+            super()
+            this.state = {
+                isMenuOpen: false, 
+                previousScrollY: 0, 
+                isNavBarHidden: false,
+                isBackButtonVisible: false
             }
-        } else {
-            this.setState({isNavBarHidden: false})
+            window.onscroll = this.toggleNavBar
         }
-    }
-
-    setBackButton = (path, history=null) => {
-        if (! path ) {
-            this.setState( {isBackButtonVisible: false } ) 
-            return
-        }
-        this.setState( {isBackButtonVisible: true } ) 
-        this.setState( {history: history } ) 
-        this.setState( {backPath: path } ) 
-    }
-
-    goBack = () => {
-        this.state.history.push(this.state.backPath)
-    }
-
-    render() {
+    
+        toggleMenu = () => this.setState({isMenuOpen: !this.state.isMenuOpen })
         
-        const devComponent = brick.routes[0].component
-        const menuClass = (this.state.isMenuOpen) ? "Drawer has-backdrop is-open" : "Drawer has-backdrop"
-        const navClass = (this.state.isNavBarHidden) ? {top: "-7rem", transition: "top 0.5s"} : {top: "0rem", transition: "top 0.5s"}
- 
-        return (
-            <Router>
-                <div>
-                    <Navbar app fixed position="top" style={navClass}> 
-                        <Nav>
-                            <NavbarItem><Heading size="xlarge" className="heading-app-name">my app</Heading></NavbarItem>
-                        </Nav>
-                        <NavbarSection pullRight>
-                            <NavbarItem onClick={this.toggleMenu} style={{fontSize: "2rem", position:"relative", top:"-1rem"}}><IconMenu/></NavbarItem>
-                        </NavbarSection>
-                        <Nav className="second-navbar" horizontal style={{display: (this.state.isBackButtonVisible) ? "block" : "none" }}>
-                            <NavbarItem onClick={this.goBack}><IconArrowback /></NavbarItem>
-                        </Nav>
-                    </Navbar>
-                    <div className="container" style={{marginTop: (this.state.isBackButtonVisible) ? "7.5em" : "10.5em" }}>
-                        <div className={menuClass} >
-                            <div className="Drawer__container">
-                                <div className="Drawer__header">
-                                <div className="Drawer__title">Menu</div>
-                                <span className="Drawer__close" onClick={this.toggleMenu}>
-                                    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                                    <path d="M0 0h24v24H0z" fill="none"/>
-                                    </svg>
-                                </span>
-                                </div>
-                                <div className="Drawer__content">
-                                    <List size="large">
-                                        <ListItem>Home</ListItem>
-                                        <ListItem><b>{brick.brickMenuName}</b></ListItem>
-                                        <ListItem>About</ListItem>
-                                    </List>
+        toggleNavBar = () => {
+            const scrollYAbs = window.scrollY - this.state.previousScrollY
+            this.setState({previousScrollY: window.scrollY})
+            if (window.scrollY > 10) {
+                if (scrollYAbs < 0) {
+                    this.setState({isNavBarHidden: false})
+                } else {
+                    this.setState({isNavBarHidden: true})
+                }
+            } else {
+                this.setState({isNavBarHidden: false})
+            }
+        }
+    
+        setBackButton = (path, history=null) => {
+            if (! path ) {
+                this.setState( {isBackButtonVisible: false } ) 
+                return
+            }
+            this.setState( {isBackButtonVisible: true } ) 
+            this.setState( {history: history } ) 
+            this.setState( {backPath: path } ) 
+        }
+    
+        goBack = () => {
+            this.state.history.push(this.state.backPath)
+        }
+    
+        render() {
+            
+            const menuClass = (this.state.isMenuOpen) ? "Drawer has-backdrop is-open" : "Drawer has-backdrop"
+            const navClass = (this.state.isNavBarHidden) ? {top: "-7rem", transition: "top 0.5s"} : {top: "0rem", transition: "top 0.5s"}
+     
+            return (
+                <Router>
+                    <div>
+                        <Navbar app fixed position="top" style={navClass}> 
+                            <Nav>
+                                <NavbarItem><Heading size="xlarge"style={{fontWeight: "100"}}>module dev</Heading></NavbarItem>
+                            </Nav>
+                            <NavbarSection pullRight>
+                                <NavbarItem onClick={this.toggleMenu} style={{fontSize: "2rem", position:"relative", top:"-1rem"}}><IconMenu/></NavbarItem>
+                            </NavbarSection>
+                            <Nav className="second-navbar" horizontal style={ {display: (this.state.isBackButtonVisible) ? "block" : "none" } }>
+                                <NavbarItem onClick={ this.goBack }><IconArrowback /></NavbarItem>
+                            </Nav>
+                        </Navbar>
+                        <div className="container" style={{marginTop: (this.state.isBackButtonVisible) ? "8rem" : "6rem", marginBottom: "5rem" }}>
+                            <div className={menuClass} >
+                                <div className="Drawer__container">
+                                    <div className="Drawer__header">
+                                    <span className="Drawer__close" onClick={this.toggleMenu}>
+                                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        </svg>
+                                    </span>
+                                    </div>
+                                    <div className="Drawer__content">
+                                        <List size="large">
+                                            { /*<ListItem><Link onClick={this.toggleMenu} to={'/'}><b>Home</b></Link></ListItem>*/ }
+                                            <ListItem><Link onClick={this.toggleMenu} to={""}>Menu</Link></ListItem>
+    
+                                        </List>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                       
-                            <AnimatedSwitch  
-                                atEnter={{ opacity: 0 }}
-                                atLeave={{ opacity: 0 }}
-                                atActive={{ opacity: 1 }}
-                                className="switch-wrapper"
-                            >
-                                {brick.routes.map((route, index) => 
-                                    <Route key={index} exact path={route.path} 
-                                        render={ (props) => {
-                                                props.setBackButton = this.setBackButton
-                                                return React.createElement(route.component, props)
-                                            }
-                                        }
-                                    />
-                                )}
-                            </AnimatedSwitch>
                         
-
-                    </div>
-                   
-                    <div style={{clear: "both", background: "lightgray", textAlign: "center"}}>
-                        <span style={ {fontSize: "0.7rem"} }>the present app has been created with ease and joy thanks to MAG - check it out</span>
-                    </div>
-
-                </div> 
-            </Router>
-        )
-  }
-}
-
-export default App
-
+                            <Switch>
+    
+                                <Route exact path="/" render={ (props) => { props.setBackButton = this.setBackButton; return React.createElement(brick.routes[0].component, props); } }  />
+                                {brick.routes.map((route, index) => <Route key={ index } exact path={ route.path }  render={ (props) => { props.setBackButton = this.setBackButton; return React.createElement(route.component, props); } } /> )}
+    
+                            </Switch>
+                            
+                        </div>
+    
+                        
+                        <div style={{background: "#d3d3d3", textAlign: "center", position: "absolute", bottom: "0", width: "100%"}}>
+                            <span style={ {fontSize: "0.7rem"} }>this app has been created without any technical skills thanks to mag</span>
+                        </div>
+    
+                    </div> 
+    
+                </Router>      
+            )
+      }
+    }
+    
+    export default App
 
 

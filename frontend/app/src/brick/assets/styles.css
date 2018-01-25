@@ -1,5 +1,4 @@
 .article > .Card {
-    top: -4rem;
     margin-bottom: 1rem;
     transition: width 0.2s;
 }
