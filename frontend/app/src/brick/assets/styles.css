@@ -77,9 +77,9 @@
        /*background: yellow;*/
     }
 
-    .article:nth-child(2) {
+    /*.article:nth-child(2) {
         height: 600px;
-    }
+    }*/
 
     .article:nth-child(3n + 5) {
         clear: none;
