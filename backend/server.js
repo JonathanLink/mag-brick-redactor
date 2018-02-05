@@ -12,12 +12,17 @@ const server = Hapi.Server({
 
 
 async function openDatabaseConnection(databaseURL) {
-    mongoose.Promise = global.Promise
-    try {
-        return await mongoose.connect(databaseURL, { useMongoClient: true })
-    } catch (err) {
-        console.log(err)
-    }
+    var success = true
+    do {
+        mongoose.Promise = global.Promise
+        try {
+            return await mongoose.connect(databaseURL, { useMongoClient: true })
+        } catch (err) {
+            console.log(err)
+            console.log("fail")
+            success = false
+        }
+    } while(!success) 
 }
 
 let brickRoutes
@@ -45,10 +50,12 @@ async function main() {
     const databaseURL = (process.env.NODE_ENV === 'production' ) ? `mongodb://${process.env.APP_NAME}_redactor_mongo_1/redactor` : 'mongodb://redactor_mongo/redactor_dev'
     console.log(databaseURL)
     await openDatabaseConnection(databaseURL)
-    
+    console.log("SUCCESS")
 
   
 
 }
 
-setTimeout(main, 10000) // wait for db to be ready 
+main()
+
+//setTimeout(main, 10000) // wait for db to be ready 
