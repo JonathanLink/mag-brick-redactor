@@ -10,6 +10,7 @@ import Badge from 'sq-web-components-core-react/elements/Badge'
 
 import '../assets/styles.css'
 import '../assets/custom.css'
+import brick from '../brick.json'
 
 class Articles extends Component {
     
@@ -26,7 +27,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/public/articles')
+                response = await fetch('http://' + brick.basePath + '/api/brick/redactor/public/articles')
             } catch(err) {
                 console.log(err)
             }
