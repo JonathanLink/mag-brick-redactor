@@ -18,6 +18,7 @@ import { ImageDrop } from 'quill-image-drop-module'
 import ImageResize from 'quill-image-resize-module'
 
 import '../assets/styles.css'
+import brick from '../brick.json'
 
 Quill.register('modules/imageDrop', ImageDrop)
 Quill.register('modules/imageResize', ImageResize)
@@ -73,7 +74,7 @@ class Article extends Component {
     fetchArticle = async (id) => {
         let response
         try {
-            response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/' + id)
+            response = await fetch('http://' + brick.basePath + '/api/brick/redactor/article/' + id)
         } catch(err) {
             console.log(err)
         }
@@ -133,7 +134,7 @@ class Article extends Component {
                 const articleId = this.props.match.params.id
                 this.article.isPosted = isPosted
                 console.log(this.article)
-                request = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/' + articleId, {method: "PUT", body: JSON.stringify(this.article) })
+                request = await fetch('http://' + brick.basePath + '/api/brick/redactor/article/' + articleId, {method: "PUT", body: JSON.stringify(this.article) })
             } catch(err) {
                 console.log(err)
             }
@@ -142,7 +143,7 @@ class Article extends Component {
             let request
             try {
                 this.article.isPosted = isPosted
-                request = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article', {method: "POST", body: JSON.stringify(this.article) })
+                request = await fetch('http://' + brick.basePath + '/api/brick/redactor/article', {method: "POST", body: JSON.stringify(this.article) })
             } catch(err) {
                 console.log(err)
             }
@@ -156,7 +157,7 @@ class Article extends Component {
             let request
             try {
                 const articleId = this.props.match.params.id
-                request = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/' + articleId, { method: "DELETE" })
+                request = await fetch('http://' + brick.basePath + '/api/brick/redactor/article/' + articleId, { method: "DELETE" })
             } catch(err) {
                 console.log(err)
             }

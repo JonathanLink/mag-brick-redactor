@@ -12,6 +12,8 @@ services:
     environment: 
       - NODE_ENV=production
       - APP_NAME=@APP_NAME_ENV@
+    networks:
+      - magengine_default
 
   redactor_mongo:
     image: mongo:3.0-wheezy
@@ -21,3 +23,10 @@ services:
       - @BASE_PATH@mag/mag-engine/apps/@APP_NAME@/bricks/redactor/database-prod:/data/db # absolute path
 
       #/home/jlink/Documents/mag/mag-engine/apps
+    networks:
+      - magengine_default
+
+    
+networks:
+  magengine_default:
+    external: true

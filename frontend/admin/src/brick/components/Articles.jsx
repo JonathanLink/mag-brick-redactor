@@ -13,6 +13,8 @@ import { say }  from "cowsay"
 
 import '../assets/styles.css'
 
+import brick from '../brick.json'
+
 class Articles extends Component {
     
     constructor() {
@@ -29,7 +31,7 @@ class Articles extends Component {
         if (this.state.articles.length  == 0) {
             let response
             try {
-                response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/articles')
+                response = await fetch('http://' + brick.basePath + '/api/brick/redactor/articles')
             } catch(err) {
                 console.log(err)
             }

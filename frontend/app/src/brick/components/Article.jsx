@@ -9,6 +9,7 @@ import List, { ListItem } from "sq-web-components-core-react/collections/List"
 
 import '../assets/styles.css'
 import '../assets/custom.css'
+import brick from '../brick.json'
 
 class Article extends Component {
 
@@ -47,7 +48,7 @@ class Article extends Component {
     incrementViews = async (id) => {
         let response
         try {
-            response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/views/' + id, {method: "PUT", body: JSON.stringify({"id": id})})
+            response = await fetch('http://' + brick.basePath + '/api/brick/redactor/article/views/' + id, {method: "PUT", body: JSON.stringify({"id": id})})
         } catch(err) {
             console.log(err)
         }
@@ -58,7 +59,7 @@ class Article extends Component {
     fetchArticle = async (id) => {
         let response
         try {
-            response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/article/' + id)
+            response = await fetch('http://' + brick.basePath + '/api/brick/redactor/article/' + id)
         } catch(err) {
             console.log(err)
         }
@@ -75,7 +76,7 @@ class Article extends Component {
     fetchTrending = async (id) => {
         let response
         try {
-            response = await fetch('http://' + ((process.env.NODE_ENV !== "production") ? "127.0.0.1:9000" : location.host) + '/api/brick/redactor/public/trending')
+            response = await fetch('http://' + brick.basePath + '/api/brick/redactor/public/trending')
         } catch(err) {
             console.log(err)
         }
