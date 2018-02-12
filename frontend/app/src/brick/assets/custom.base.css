@@ -4,3 +4,18 @@
     /*border: 0.05rem solid @@PRIMARY_COLOR@@;  */  
     background: @@PRIMARY_COLOR@@; 
 }
+
+blockquote {
+    color: @@PRIMARY_COLOR@@;
+    font-size: 2rem;
+}
+.article-content > h2 {
+    font-size: 1.5rem;
+    /*color: @@PRIMARY_COLOR@@;*/
+    color:  #323232; 
+}
+.trending-separator {
+    background: @@PRIMARY_COLOR@@;
+    font-size: 1.1rem;
+    padding-top: rem;
+}

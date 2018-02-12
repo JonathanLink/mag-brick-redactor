@@ -95,8 +95,7 @@ class Article extends Component {
         const trending = this.state.trending.map( (article, index) =>  (<ListItem key={index} className="trending-list-item">
                             <Link to={ '/redactor/article/' + article._id } >
                                 <div>     
-                                    <Heading size="large" style={{marginBottom: "1rem"}}>{article.title}</Heading>
-                                    {article.intro}
+                                    <Heading size="large" style={{marginBottom: "1rem"}} className="trending-header">{article.title}</Heading>
                                 </div>
                             </Link>
                         </ListItem>))
@@ -125,7 +124,7 @@ class Article extends Component {
                     </CardItem>*/}
 
                     <br/>
-                    <Heading size="large" style={{ paddingLeft: "0.6rem", borderBottom: "0.05rem solid lightgray", marginBottom: "1rem", marginTop: "3rem"}}>Most Read</Heading>
+                    <Heading size="large" style={{ paddingLeft: "0.6rem", borderBottom: "0.05rem solid lightgray", marginBottom: "1rem", marginTop: "3rem"}} className="trending-separator" >Most Read</Heading>
                     <List horizontal style={{marginBottom: "10rem", paddingBottom: "1rem", borderBottom: "0.05rem solid lightgray"}}>
                         { trending }
                     </List> 

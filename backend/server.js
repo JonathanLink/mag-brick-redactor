@@ -6,8 +6,7 @@ const API = require('./api/api.js')
 
 const server = Hapi.Server({ 
     host: '0.0.0.0', 
-    port: 8000,
-    routes: {cors: { origin: ['*'] }}
+    port: 8000
 })
 
 

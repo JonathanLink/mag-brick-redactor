@@ -96,7 +96,8 @@ class Articles extends Component {
     }
 
     displayNoArticleMessage = () => {
-        return (<div style={{textAlign: "center", fontSize: "2rem"}}>No article for the moment <br/> <span style={{fontSize:"1.5rem"}}>Maybe later...</span></div>)
+        //return (<div style={{textAlign: "center", fontSize: "2rem"}}>No article for the moment <br/> <span style={{fontSize:"1.5rem"}}>Maybe later...</span></div>)
+        return(<div></div>)    
     }
 
     render() {
